@@ -15,7 +15,11 @@ services:
     image: ghcr.io/blockchain-networks-io/mucho-conector:latest
     restart: on-failure
     stop_grace_period: 10s
-    user: "1000:1000"
+    # Sin `user:` a propósito: el contenedor arranca como root SOLO para dar la
+    # propiedad de /data al usuario `node` y baja de privilegios en el acto
+    # (docker-entrypoint.sh). Con `user: "1000:1000"` el directorio que crea
+    # Docker para el bind mount es de root y el agente no podía guardar el
+    # vínculo («Internal Server Error» al pegar el código).
     init: true
     environment:
       MUCHO_RELAY_URL: wss://wallet.mucho.finance/api/node-relay/agent
