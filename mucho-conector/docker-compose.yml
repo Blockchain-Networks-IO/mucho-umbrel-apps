@@ -22,7 +22,9 @@ services:
     # vínculo («Internal Server Error» al pegar el código).
     init: true
     environment:
-      MUCHO_RELAY_URL: wss://wallet.mucho.finance/api/node-relay/agent
+      # El monedero cuelga de /wallet en ese dominio: sin el prefijo, nginx
+      # contesta 404 y el conector nunca se pone en línea.
+      MUCHO_RELAY_URL: wss://wallet.mucho.finance/wallet/api/node-relay/agent
       # La app Mempool de Umbrel exporta su IP y su puerto; su API vive en /api.
       NODE_API_BASE: http://$APP_MEMPOOL_IP:$APP_MEMPOOL_PORT/api
       PORT: 3040
