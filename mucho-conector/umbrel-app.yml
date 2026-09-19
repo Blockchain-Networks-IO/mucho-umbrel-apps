@@ -1,0 +1,45 @@
+manifestVersion: 1
+id: mucho-conector
+name: Conector Mucho
+tagline: Tu nodo Bitcoin en Mucho Wallet, desde cualquier navegador
+icon: https://raw.githubusercontent.com/Blockchain-Networks-IO/mucho-umbrel-apps/main/mucho-conector/icon.svg
+category: Bitcoin
+version: "0.1.0"
+port: 3040
+description: >-
+  Conecta tu nodo Bitcoin (la app Mempool de tu Umbrel) con Mucho Wallet para
+  que el saldo, la actividad, las comisiones y el envío de bitcoin salgan de TU
+  nodo, estés donde estés y en cualquier navegador.
+
+
+  Es tu nodo el que abre una conexión saliente hacia Mucho: no hay que abrir
+  puertos en el router, ni poner un dominio, ni certificados. Cada consulta y
+  cada respuesta viajan cifradas de extremo a extremo entre tu navegador y
+  este conector: el servidor de Mucho solo ve sobres cerrados, nunca tus
+  direcciones.
+
+
+  Cómo se usa: en Mucho Wallet ve a «Mi wallet» › Conexiones › Conector Mucho y
+  pulsa «Vincular mi nodo»; copia el código que aparece y pégalo en esta app.
+  En unos segundos el monedero dirá «en línea».
+
+
+  Este conector solo atiende lecturas de la API de Mempool (saldos, UTXOs,
+  transacciones, comisiones) y la difusión de transacciones ya firmadas. Nunca
+  firma nada ni tiene acceso a tus llaves.
+developer: Mucho
+website: https://mucho.finance
+submitter: Mucho
+submission: https://github.com/Blockchain-Networks-IO/mucho-umbrel-apps
+repo: https://github.com/Blockchain-Networks-IO/mucho-wallet
+support: https://github.com/Blockchain-Networks-IO/mucho-umbrel-apps/issues
+gallery:
+  - https://raw.githubusercontent.com/Blockchain-Networks-IO/mucho-umbrel-apps/main/mucho-conector/icon.svg
+releaseNotes: >-
+  Primera versión: vinculación por código, relay cifrado de extremo a extremo,
+  lotes de direcciones y prueba del nodo desde la propia app.
+dependencies:
+  - mempool
+path: ""
+defaultUsername: ""
+defaultPassword: ""

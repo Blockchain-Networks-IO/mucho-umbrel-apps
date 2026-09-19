@@ -1,0 +1,27 @@
+version: "3.7"
+
+services:
+  app_proxy:
+    environment:
+      # <app-id>_<servicio>_1
+      APP_HOST: mucho-conector_web_1
+      APP_PORT: 3040
+
+  web:
+    # Imagen publicada por el workflow «Conector: imagen Docker» del repo
+    # mucho-wallet (paquete público en GHCR). Para fijarla a una versión exacta,
+    # sustituir el tag por el digest que imprime el resumen del workflow:
+    #   ghcr.io/blockchain-networks-io/mucho-conector@sha256:…
+    image: ghcr.io/blockchain-networks-io/mucho-conector:latest
+    restart: on-failure
+    stop_grace_period: 10s
+    user: "1000:1000"
+    init: true
+    environment:
+      MUCHO_RELAY_URL: wss://wallet.mucho.finance/api/node-relay/agent
+      # La app Mempool de Umbrel exporta su IP y su puerto; su API vive en /api.
+      NODE_API_BASE: http://$APP_MEMPOOL_IP:$APP_MEMPOOL_PORT/api
+      PORT: 3040
+      DATA_DIR: /data
+    volumes:
+      - ${APP_DATA_DIR}/data:/data
