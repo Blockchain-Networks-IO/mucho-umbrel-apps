@@ -4,7 +4,7 @@ name: Conector Mucho
 tagline: Tu nodo Bitcoin en Mucho Wallet, desde cualquier navegador
 icon: https://raw.githubusercontent.com/Blockchain-Networks-IO/mucho-umbrel-apps/main/mucho-conector/icon.svg
 category: Bitcoin
-version: "0.1.2"
+version: "0.1.3"
 port: 3040
 description: >-
   Conecta tu nodo Bitcoin (la app Mempool de tu Umbrel) con Mucho Wallet para
@@ -36,10 +36,10 @@ support: https://github.com/Blockchain-Networks-IO/mucho-umbrel-apps/issues
 gallery:
   - https://raw.githubusercontent.com/Blockchain-Networks-IO/mucho-umbrel-apps/main/mucho-conector/icon.svg
 releaseNotes: >-
-  Arreglada la conexión con el relay de Mucho Wallet: la dirección del relay
-  llevaba una ruta incorrecta y el servidor contestaba 404, así que el conector
-  se quedaba «desconectado» aunque el código estuviera bien guardado. Además,
-  los errores de conexión ahora dicen qué pasa y de quién depende.
+  El conector ya atiende la consulta de qué transacción gastó cada salida, que
+  usa el nuevo «Expediente de origen de fondos» de Mucho Wallet para seguir en
+  la cadena el camino de tu bitcoin desde el retiro de un exchange. Así ese
+  recorrido también sale de TU nodo.
 dependencies:
   - mempool
 path: ""
